@@ -1,1 +1,1 @@
-modlib.mod.init("playertags")
+modlib.mod.init()
