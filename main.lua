@@ -51,8 +51,8 @@ function make_nametag_invisible(player)
     local color = player:get_nametag_attributes().color
     color.a = 0
     player:set_nametag_attributes{
-        -- Empty nametag in order to counter poorly made hacked clients
-        text = "",
+        -- Null nametag in order to counter poorly made hacked clients (isn't empty, but won't be rendered)
+        text = "\0",
         color = color
     }
 end
