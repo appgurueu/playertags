@@ -23,10 +23,11 @@ modlib.table.add_all(getfenv(1), config)
 y_size = size * (64 / 48)
 
 function generate_texture(s)
-    local r = "playertag_bg.png^[resize:" .. tostring(string.len(s) * 48) .. "x64"
+    local w = tostring(string.len(s) * 48)
+    local r = "playertag_bg.png^[resize:" .. w .. "x64^[combine:" .. w .. "x64"
     for i = 1, string.len(s) do
         local char = "freemono_" .. string.byte(s, i) .. ".png"
-        r = r .. "^[combine:64x64:" .. tostring((i - 1) * 48) .. ",0" .. "=" .. char
+        r = r .. ":" .. tostring((i - 1) * 48) .. ",0" .. "=" .. char
     end
     return r
 end
