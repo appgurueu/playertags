@@ -1,3 +1,8 @@
-playertags.step (Playertags step) float 0.1 0.000000 1073741824.000000
-playertags.glow (Playertags glow) float 7 0.000000 15.000000
-playertags.size (Playertags size) float 0.25 0.000000 1073741824.000000
+# Nametag glow
+playertags.glow (Playertags Glow) float 7 0.000000 15.000000
+
+# Nametag size (character width) in blocks. Setting this to `0` disables nametags.
+playertags.size (Playertags Size) float 0.25 0.000000 1073741824.000000
+
+# Each `step` seconds the nametag updates. Decrease this if nametags aren't smooth enough.
+playertags.step (Playertags Step) float 0.1 0.000000 1073741824.000000

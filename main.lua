@@ -1,39 +1,19 @@
-config =
-    modlib.conf.import(
-    "playertags",
-    {
-        type = "table",
-        children = {
-            glow = {
-                type = "number",
-                range = {0, 15}
-            },
-            size = {
-                type = "number",
-                range = {0}
-            },
-            step = {
-                type = "number",
-                range = {0}
-            }
-        }
-    }
-)
-modlib.table.add_all(getfenv(1), config)
+modlib.table.add_all(getfenv(1), modlib.mod.configuration())
 y_size = size * (64 / 48)
 
 function generate_texture(s)
-    local w = tostring(string.len(s) * 48)
+    local w = tostring(#s * 48)
     local r = "playertag_bg.png^[resize:" .. w .. "x64^[combine:" .. w .. "x64"
-    for i = 1, string.len(s) do
-        local char = "freemono_" .. string.byte(s, i) .. ".png"
+    for i = 1, #s do
+        local char = "freemono_" .. s:byte(i) .. ".png"
         r = r .. ":" .. tostring((i - 1) * 48) .. ",0" .. "=" .. char
     end
     return r
 end
 
 function generate_player_texture(player)
-    return generate_texture(player:get_player_name()) .. "^[multiply:" .. modlib.player.get_color(player)
+    return generate_texture(player:get_player_name()) .. "^[multiply:"
+        .. modlib.minetest.colorspec.new(player:get_nametag_attributes().color):to_string()
 end
 
 function attach_tag(tag, player)
@@ -43,7 +23,7 @@ end
 function get_visual_size(name)
     return {
         y = y_size,
-        x = size * name:len(),
+        x = size * #name,
         z = 1
     }
 end

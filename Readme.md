@@ -29,14 +29,29 @@ Shows colored player nametags floating above players. Configurable.
 
 ## Configuration
 
+<!--modlib:conf:2-->
 ### `glow`
 
-Value from `0` to `15`. Indicates brightness when it's dark. 15 means full brightness. Default is `7`.
+Nametag glow
+
+* Type: number
+* Default: `7`
+* &gt;= `0`
+* &lt;= `15`
 
 ### `size`
 
-Positive number. Nametag size (character width) in blocks. Default is `0.25`. If set to 0, nametags are just disabled.
+Nametag size (character width) in blocks. Setting this to `0` disables nametags.
+
+* Type: number
+* Default: `0.25`
+* &gt;= `0`
 
 ### `step`
 
-Positive number. Each `step` seconds the nametag updates. Default is `0.1`.
+Each `step` seconds the nametag updates. Decrease this if nametags aren't smooth enough.
+
+* Type: number
+* Default: `0.1`
+* &gt;= `0`
+<!--modlib:conf-->
