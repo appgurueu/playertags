@@ -29,12 +29,14 @@ function get_visual_size(name)
 end
 
 function make_nametag_invisible(player)
-    local color = player:get_nametag_attributes().color
-    color.a = 0
+    local nametag_attrs = player:get_nametag_attributes()
+    local color, bgcolor = nametag_attrs.color, nametag_attrs.bgcolor or {r = 0, g = 0, b = 0, a = 0}
+    color.a, bgcolor.a = 0, 0
     player:set_nametag_attributes{
         -- Null nametag in order to counter poorly made hacked clients (isn't empty, but won't be rendered)
         text = "\0",
-        color = color
+        color = color,
+        bgcolor = bgcolor
     }
 end
 
